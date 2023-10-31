@@ -11,21 +11,19 @@ const Registration = () => {
         Name:"",
         Email:"",
         Password:"",
-        Gender:{
-            Male:"",
-            Female:""
-        }
+        Gender:""
     }
 
     const validationSchema = Yup.object({
         Name:Yup.string().required('Name is required'),
-        Email:Yup.string().required('Email is required').email('Enter Valid Email').matches( /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/,"Email valid email only"),
+        Email:Yup.string().required("Email is required").email('enter valid email').matches( /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/," not match"),
         Password:Yup.string().min(6,'Password should be atleast 6 characters long').max(10,"Password should be atleast 6 characters long")
       })
 
       const handleSubmit = (values) => {
         console.log(values)
     };
+    const values = ["M","F"]
 
   return (
     <Container>
@@ -38,23 +36,13 @@ const Registration = () => {
                     (formik)=>(
                         <Form>
                             
-                            <HelperController name="Name" type="text" control='input' label="Name" placeholder="Enter The Name" />
-                            <HelperController name="Email" type="email" control='input' label="Email" placeholder="Enter The Email" />
-                            <HelperController name="Password" type="Password" control='input' label="Password" placeholder="Enter The Password" />
-                           <div style={{display:"flex",gap:"20px"}} className='mt-2'>
-                                {/* <div id="my-radio-group">Gender</div> */}
-                                <HelperController name="Gender.Male" type="radio" control='Radio' label="Male" value="M" aria-labelledby="my-radio-group" />
-                                <HelperController name="Gender.Female" type="radio" control='Radio' label="Female" value="F"  aria-labelledby="my-radio-group"/>
-                           </div>
+                            <HelperController Name="Name" type="text" control='input' label="Name" placeholder="Enter The Name" />
+                            <HelperController Name="Email" type='email' control='input' label="Email" placeholder="Enter The Email" />
+                            <HelperController Name="Password" type="Password" control='input' label="Password" placeholder="Enter The Password" />
+                            <HelperController Name="Gender" type="radio" value={values} control='Radio' label="Gender"  />
+                        
                                     
-                           
-                           
-                            
-                            
-                            
-                            <Button type="submit" className='mt-3' >
-                                Submit
-                            </Button>
+                           <input type='submit' value='submit' />
                         </Form>
                     )
                 }

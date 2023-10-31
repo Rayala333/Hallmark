@@ -2,15 +2,23 @@ import React from 'react';
 import { Field,ErrorMessage } from 'formik';
 
 const Radio = (props) => {
-    const {label,name,value,...rest} = props
+    const {label,Name,value,...rest} = props
   return (
     
           <div role="group" aria-labelledby="my-radio-group">
             <label>
-              <Field  name="picked" value={value} {...rest}/>
-              {label}
+              {label}<br></br>
+              {
+                value.map((e,i)=>(
+                  <div key={i}>
+                  <Field  name={Name} value={e} {...rest}/>
+                  {e}
+                  </div>
+                ))
+              }
+    
             </label>
-            <ErrorMessage name={name} />
+            <ErrorMessage name={Name} />
         </div>
 
   )
