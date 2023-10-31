@@ -11,19 +11,23 @@ const Registration = () => {
         Name:"",
         Email:"",
         Password:"",
-        Gender:""
+        Gender:"",
+        Language:[],
+        Course:''
     }
 
     const validationSchema = Yup.object({
         Name:Yup.string().required('Name is required'),
         Email:Yup.string().required("Email is required").email('enter valid email').matches( /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/," not match"),
-        Password:Yup.string().required("password is required").min(6,'Password should be atleast 6 characters long').max(10,"Password should be atleast 6 characters long")
+        Password:Yup.string().required("password is required").min(6,'Password should be atleast 6 characters long').max(10,"Password should be atleast 6 characters long"),
+        Gender:Yup.string().required("<--select any one of it")
       })
 
       const handleSubmit = (values) => {
         console.log(values)
     };
     const values = ["M","F"]
+    const data = ["HTML","CSS","JS","R_JS"]
 
   return (
     <Container>
@@ -40,7 +44,10 @@ const Registration = () => {
                             <HelperController Name="Email" type='email' control='input' label="Email" placeholder="Enter The Email" />
                             <HelperController Name="Password" type="Password" control='input' label="Password" placeholder="Enter The Password" />
                             <HelperController Name="Gender" type="radio" value={values} control='Radio' label="Gender"  />
+                            <HelperController Name="Language" type="checkbox" value={data} control='Radio' label="Language"  />
+                            <HelperController Name="Course" type="select " value={data} control='Course' label="Course"  />
                         
+       
                                     
                            <input type='submit' value='submit' />
                         </Form>
