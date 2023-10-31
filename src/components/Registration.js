@@ -17,7 +17,7 @@ const Registration = () => {
     const validationSchema = Yup.object({
         Name:Yup.string().required('Name is required'),
         Email:Yup.string().required("Email is required").email('enter valid email').matches( /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/," not match"),
-        Password:Yup.string().min(6,'Password should be atleast 6 characters long').max(10,"Password should be atleast 6 characters long")
+        Password:Yup.string().required("password is required").min(6,'Password should be atleast 6 characters long').max(10,"Password should be atleast 6 characters long")
       })
 
       const handleSubmit = (values) => {
