@@ -7,11 +7,11 @@ import Registration from './Registration';
 const Main = () => {
   return (
     <Container>
-        <Row >
-            <Col xs={6}>
+        <Row className='mb-2 d-flex align-items-center vh-100'>
+            <Col xs={12} sm={6}>
                 <img src={Image} alt='regstration_Image' style={{width:"100%",height:"100vh"}}/>
             </Col>
-            <Col xs={6}>
+            <Col xs={12} sm={6}>
                 <Registration />
             </Col>
         </Row>

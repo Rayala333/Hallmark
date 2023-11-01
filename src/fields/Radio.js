@@ -13,7 +13,7 @@ const Radio = (props) => {
                     </Form.Label>
                     {
                     value.map((e,i)=>(
-                          <Form.Check inline as={Field} key={i} name={Name} value={e} type={type} {...rest} label={e} className='mx-3' />
+                          <Form.Check inline as={Field} key={i} name={Name} value={e} type={type} {...rest} label={e} className='mx-3'xs={12} />
                     ))
                   }
 

@@ -9,7 +9,7 @@ const Dropdown = (props) => {
         <option>--Select--</option>
     {
         value.map((e,i)=>(
-            <option className='m-2'  key={i} value={e}  {...rest}>{e}</option>
+            <option className='m-2'  key={i} value={e}  {...rest} >{e}</option>
         ))
     }
     </Field>
