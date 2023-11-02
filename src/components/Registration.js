@@ -21,7 +21,8 @@ const Registration = () => {
             twitter:""
         },
         Phonenumbers:[],
-        phNumbers:[""]
+        phNumbers:[""],
+        BarthDate:null
     }
 
     const validationSchema = Yup.object({
@@ -30,11 +31,14 @@ const Registration = () => {
         Phone:Yup.string().required("Phone number is required").matches(/^[6-9]\d{9}$/,"Please enter valid number"),
         Password:Yup.string().required("password is required").min(6,'Password should be atleast 6 characters long').max(10,"Password should be atleast 6 characters long"),
         conformpas:Yup.string().required("This field is required").min(6,'Password should be atleast 6 characters long').max(10,"Password should be atleast 6 characters long").oneOf([Yup.ref("Password")],"Password Not match"),
-        Gender:Yup.string().required("<--select any one of it")
+
+        Gender:Yup.string().required("<--select any one of it"),
+        BarthDate:Yup.date().required("required").nullable()
       })
 
-      const handleSubmit = (values) => {
+      const handleSubmit = (values,onSubmitProps) => {
         console.log(values)
+        onSubmitProps.resetForm()
     };
     const values = ["M","F"]
     const data = ["HTML","CSS","JS","R_JS"]
@@ -78,7 +82,7 @@ const Registration = () => {
                                                 <div>
                                                     {
 
-                                                        
+
                                                         phNumbers.map((phNumbers,index)=>(
                                                             <div key={index}>
                                                                 <Field name={`phNumbers[${index}]`} />
@@ -99,11 +103,16 @@ const Registration = () => {
                                         }
                                     }
                                 </FieldArray>
+
+                                <HelperController Name="BarthDate" type="date" control='Date' label="BarthDate" placeholder="Enter The BarthDate" />
+
+
                             </div>
                             
                         
                             
                            <Button type='submit'>Submit</Button>
+                           <Button type='reset'>Reset</Button>
                         </Form>
                     )
                 }
